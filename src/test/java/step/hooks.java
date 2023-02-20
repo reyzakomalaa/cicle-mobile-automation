@@ -28,7 +28,7 @@ public class hooks extends env {
         driver = new AndroidDriver(url, capabilities);
 
         //User is in onboarding page
-        wait = new WebDriverWait(driver, 10);
+        wait = new WebDriverWait(driver, 20);
         wait.until(ExpectedConditions.visibilityOfElementLocated(elementLogin.getOnboardingLogo()));
         driver.findElement(elementLogin.getOnboardingLogo()).isDisplayed();
 
@@ -53,7 +53,6 @@ public class hooks extends env {
     @After
     public void after(){
 //        driver.quit();
-        System.out.println("Success!");
     }
 
 

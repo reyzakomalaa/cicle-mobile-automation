@@ -1,6 +1,7 @@
 package object;
 
 import config.env;
+import io.appium.java_client.MobileBy;
 import org.openqa.selenium.By;
 
 public class pageLogin {
@@ -28,5 +29,10 @@ public class pageLogin {
 
     public By getBtnSelectAccount() {
         return btnSelectAccount;
+    }
+    By btnYes = By.xpath("//*[@content-desc = 'Yes!']");
+
+    public By getBtnYes() {
+        return btnYes;
     }
 }

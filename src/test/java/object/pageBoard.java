@@ -81,4 +81,9 @@ public class pageBoard {
     public By getToastSuccessUnarchived() {
         return toastSuccessUnarchived;
     }
+
+    public By verifyBoardPage(String existingTeamName){
+        By txtTeamName = By.xpath("//*[contains(@content-desc, '" + existingTeamName + "')]");
+        return txtTeamName;
+    }
 }

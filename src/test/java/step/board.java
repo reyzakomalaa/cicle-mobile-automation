@@ -11,17 +11,14 @@ import object.reusableObject;
 import object.pageTeam;
 import object.pageBoard;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class board extends env {
     reusableObject element = new reusableObject();
     pageTeam elementTeam = new pageTeam();
     pageBoard elementBoard = new pageBoard();
-    @When("user click Team")
-    public void userClickTeam() {
-        wait = new WebDriverWait(driver, 10);
-
-        wait.until(ExpectedConditions.elementToBeClickable(element.verifyNameAndDescription(splitName)));
-        driver.findElement(element.verifyNameAndDescription(splitName)).click();
-    }
 
     @And("user click Board")
     public void userClickBoard() {
@@ -32,8 +29,22 @@ public class board extends env {
     }
 
     @Then("user is in Board page")
-    public void userIsInBoardPage() {
-        driver.findElement(element.verifyNameAndDescription(splitName)).isDisplayed();
+    public void userIsInBoardPage() throws InterruptedException {
+        try {
+            Scanner read = new Scanner(new File("src/test/resources/files/teamName.txt"));
+            while (read.hasNextLine()) {
+                existingTeamName = read.nextLine();
+
+                wait = new WebDriverWait(driver, 10);
+
+                wait.until(ExpectedConditions.visibilityOfElementLocated(elementBoard.verifyBoardPage(existingTeamName)));
+                driver.findElement(elementBoard.verifyBoardPage(existingTeamName)).isDisplayed();
+            }
+            Thread.sleep(2000);
+            read.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     @When("user click Create List")

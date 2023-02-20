@@ -20,10 +20,13 @@ public class env {
     public static String splitDescription;
     public static String splitBoardName;
     public static String splitCardName;
+    public String existingCompanyName;
+    public String existingTeamName;
     public String fakerCompanyName(){
-        String randomCompanyName = "Company" + faker.numerify("######");
+        String randomCompanyName = "Company" + faker.numerify("###");
         return randomCompanyName;
     }
+    public String randomCompanyName = "Company" + faker.numerify("###");
     public String fakerCompanyDescription(){
         String randomCompanyDescription = faker.company().industry();
         return randomCompanyDescription;
