@@ -104,7 +104,6 @@ public class companyHome extends env {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
     }
 
     @And("user fill Team Name")
@@ -126,5 +125,34 @@ public class companyHome extends env {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @When("user click Add New Member icon on Home page")
+    public void userClickAddNewMemberIconOnHomePage() {
+        wait = new WebDriverWait(driver, 10);
+
+        wait.until(ExpectedConditions.elementToBeClickable(elementHome.getBtnAddMember()));
+        driver.findElement(elementHome.getBtnAddMember()).click();
+    }
+
+    @And("user fill Member Email")
+    public void userFillMemberEmail() {
+        wait = new WebDriverWait(driver, 10);
+
+        wait.until(ExpectedConditions.elementToBeClickable(elementHome.getFieldEmail()));
+        driver.findElement(elementHome.getFieldEmail()).sendKeys("dummy2.reyza@gmail.com");
+    }
+
+    @And("user click Send")
+    public void userClickSend() {
+        driver.findElement(elementHome.getBtnSend()).click();
+    }
+
+    @Then("show toaster success invitation has been sent")
+    public void showToasterSuccessInvitationHasBeenSent() {
+        wait = new WebDriverWait(driver, 10);
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(elementHome.getToastInvitationSuccess()));
+        driver.findElement(elementHome.getToastInvitationSuccess()).isDisplayed();
     }
 }

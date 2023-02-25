@@ -13,6 +13,8 @@ import object.pageBoard;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class board extends env {
@@ -70,6 +72,9 @@ public class board extends env {
 
     @Then("show created List name")
     public void showCreatedListName() {
+        wait = new WebDriverWait(driver, 10);
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(elementBoard.verifyBoardName(splitBoardName)));
         driver.findElement(elementBoard.verifyBoardName(splitBoardName)).isDisplayed();
         verifyBoardList = driver.findElement(elementBoard.verifyBoardName(splitBoardName)).getAttribute("content-desc");
         Assert.assertEquals(verifyBoardList, splitBoardName);
@@ -86,6 +91,14 @@ public class board extends env {
         saveCardName = driver.findElement(elementBoard.getFieldCardName()).getText();
         String[] result = saveCardName.split(",", 2);
         splitCardName = result[0];
+
+        try {
+            FileWriter writer = new FileWriter("src/test/resources/files/cardName.txt", false);
+            writer.write(saveCardName + System.lineSeparator());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @And("user click Checklist button")
@@ -121,16 +134,6 @@ public class board extends env {
         driver.findElement(elementBoard.getToastSuccessArchived()).isDisplayed();
     }
 
-    @When("user click three dots navigation on Card")
-    public void userClickThreeDotsNavigationOnCard() {
-        
-        
-    }
-
-    @Then("show toaster Card has been moved to Archived")
-    public void showToasterCardHasBeenMovedToArchived() {
-    }
-
     @When("user click Archived icon")
     public void userClickArchivedIcon() {
         driver.findElement(elementBoard.getBtnArchivedIcon()).click();
@@ -143,7 +146,10 @@ public class board extends env {
 
     @And("user click Restore")
     public void userClickRestore() {
-        
+        wait = new WebDriverWait(driver, 10);
+
+        wait.until(ExpectedConditions.elementToBeClickable(elementBoard.getBtnRestore()));
+        driver.findElement(elementBoard.getBtnRestore()).click();
     }
 
     @And("user click Ok")
@@ -157,5 +163,29 @@ public class board extends env {
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(elementBoard.getToastSuccessUnarchived()));
         driver.findElement(elementBoard.getToastSuccessUnarchived()).isDisplayed();
+    }
+
+    @Then("Board will not be created")
+    public void boardWillNotBeCreated() {
+        driver.findElement(elementBoard.getBtnSubmit()).isDisplayed();
+    }
+
+    @Then("card will not be created")
+    public void cardWillNotBeCreated() throws InterruptedException {
+        try {
+            Scanner read = new Scanner(new File("src/test/resources/files/teamName.txt"));
+            while (read.hasNextLine()) {
+                existingTeamName = read.nextLine();
+
+                wait = new WebDriverWait(driver, 10);
+
+                wait.until(ExpectedConditions.visibilityOfElementLocated(elementBoard.verifyBoardPage(existingTeamName)));
+                driver.findElement(elementBoard.verifyBoardPage(existingTeamName)).isDisplayed();
+            }
+            Thread.sleep(2000);
+            read.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }

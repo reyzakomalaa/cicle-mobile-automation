@@ -58,3 +58,12 @@ Feature: Home
     And user select Add new Project
     And user click Create
     Then show error toaster must be filled name and description
+
+  @AddMember
+  Scenario: Ensure user can invite new Member
+    Given user in Company List page
+    When user click Existing Company
+    When user click Add New Member icon on Home page
+    And user fill Member Email
+    And user click Send
+    Then show toaster success invitation has been sent

@@ -86,4 +86,10 @@ public class pageBoard {
         By txtTeamName = By.xpath("//*[contains(@content-desc, '" + existingTeamName + "')]");
         return txtTeamName;
     }
+
+    By btnRestore = By.xpath("/android.view.View[@content-desc = 'Restore']");
+
+    public By getBtnRestore() {
+        return btnRestore;
+    }
 }

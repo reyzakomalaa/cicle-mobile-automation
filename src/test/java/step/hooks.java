@@ -17,8 +17,8 @@ public class hooks extends env {
     @Before
     public void before() throws MalformedURLException {
         capabilities = new DesiredCapabilities();
-        capabilities.setCapability("deviceName", "RYZ");
-        capabilities.setCapability("udid", "c3b0b9c4");
+        capabilities.setCapability("deviceName", "Device Testing");
+        capabilities.setCapability("udid", "emulator-5554");
         capabilities.setCapability("platformName", "Android");
         capabilities.setCapability("platformVersion", "11");
         capabilities.setCapability("appPackage", "staging.cicle");
