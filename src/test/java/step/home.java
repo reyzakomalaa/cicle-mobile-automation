@@ -15,7 +15,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class companyHome extends env {
+public class home extends env {
     reusableObject element = new reusableObject();
     pageHome elementHome = new pageHome();
     @When("user click Add icon on Home page")
@@ -77,8 +77,8 @@ public class companyHome extends env {
 
                 wait = new WebDriverWait(driver, 10);
 
-                wait.until(ExpectedConditions.elementToBeClickable(elementHome.selectExistingCompany(existingCompanyName)));
-                driver.findElement(elementHome.selectExistingCompany(existingCompanyName)).click();
+                wait.until(ExpectedConditions.elementToBeClickable(element.selectExistingCompany(existingCompanyName)));
+                driver.findElement(element.selectExistingCompany(existingCompanyName)).click();
             }
             Thread.sleep(2000);
             read.close();
@@ -96,8 +96,8 @@ public class companyHome extends env {
 
                 wait = new WebDriverWait(driver, 10);
 
-                wait.until(ExpectedConditions.elementToBeClickable(elementHome.selectExistingTeam(existingTeamName)));
-                driver.findElement(elementHome.selectExistingTeam(existingTeamName)).click();
+                wait.until(ExpectedConditions.elementToBeClickable(element.selectExistingTeam(existingTeamName)));
+                driver.findElement(element.selectExistingTeam(existingTeamName)).click();
             }
             Thread.sleep(2000);
             read.close();
@@ -112,7 +112,7 @@ public class companyHome extends env {
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(element.getFieldName()));
         driver.findElement(element.getFieldName()).click();
-        driver.findElement(element.getFieldName()).sendKeys(randomCompanyName);
+        driver.findElement(element.getFieldName()).sendKeys(teamName);
 
         saveName = driver.findElement(element.getFieldName()).getText();
         String[] result = saveName.split(",", 2);
@@ -120,7 +120,7 @@ public class companyHome extends env {
 
         try {
             FileWriter writer = new FileWriter("src/test/resources/files/teamName.txt", false);
-            writer.write(randomCompanyName + System.lineSeparator());
+            writer.write(teamName + System.lineSeparator());
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -154,5 +154,61 @@ public class companyHome extends env {
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(elementHome.getToastInvitationSuccess()));
         driver.findElement(elementHome.getToastInvitationSuccess()).isDisplayed();
+    }
+
+    @When("user click Menu")
+    public void userClickMenu() {
+        wait = new WebDriverWait(driver, 10);
+
+        wait.until(ExpectedConditions.elementToBeClickable(elementHome.getBtnMenu()));
+        driver.findElement(elementHome.getBtnMenu()).click();
+    }
+
+    @And("user click Email")
+    public void userClickEmail() {
+        wait = new WebDriverWait(driver, 10);
+
+        wait.until(ExpectedConditions.elementToBeClickable(elementHome.getBtnMyAccount()));
+        driver.findElement(elementHome.getBtnMyAccount()).click();
+    }
+
+    @And("user click Notification icon")
+    public void userClickNotificationIcon() {
+        wait = new WebDriverWait(driver,10);
+
+        wait.until(ExpectedConditions.elementToBeClickable(elementHome.getBtnNotification()));
+        driver.findElement(elementHome.getBtnNotification()).click();
+    }
+
+    @And("user click Inbox")
+    public void userClickInbox() {
+        wait = new WebDriverWait(driver,10);
+
+        wait.until(ExpectedConditions.elementToBeClickable(elementHome.getBtnInbox()));
+        driver.findElement(elementHome.getBtnInbox()).click();
+    }
+
+    @Then("user will see HQ section Empty State")
+    public void userWillSeeHQSectionEmptyState() {
+        wait = new WebDriverWait(driver,10);
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(elementHome.getEmptyStateHQ()));
+        driver.findElement(elementHome.getEmptyStateHQ()).isDisplayed();
+    }
+
+    @Then("user will see Team section Empty State")
+    public void userWillSeeTeamSectionEmptyState() {
+        wait = new WebDriverWait(driver,10);
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(elementHome.getEmptyStateTeam()));
+        driver.findElement(elementHome.getEmptyStateTeam()).isDisplayed();
+    }
+
+    @And("click Workload")
+    public void clickWorkload() {
+        wait = new WebDriverWait(driver,10);
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(elementHome.getBtnWorkload()));
+        driver.findElement(elementHome.getBtnWorkload()).click();
     }
 }

@@ -36,6 +36,19 @@ public class reusableObject {
         By txtNameAndDescription = By.xpath("//*[contains(@content-desc, '" + splitName + "')]");
         return txtNameAndDescription;
     }
+    public By selectExistingCompany(String existingCompanyName){
+        By companyList = By.xpath("//*[@content-desc = '" + existingCompanyName + "']");
+        return companyList;
+    }
+    public By selectExistingTeam(String existingTeamName){
+        By companyList = By.xpath("//*[contains(@content-desc, '" + existingTeamName + "')]");
+        return companyList;
+    }
+    By btnBackToPrevious = By.xpath("//android.widget.Button[@content-desc = 'Back']");
+
+    public By getBtnBackToPrevious() {
+        return btnBackToPrevious;
+    }
 
 //    public By getBtn_certainTeam(String teamName) {
 //        By btn_certainTeam = By.xpath("//android.widget.Button[contains(@content-desc, '" + teamName + "')]");

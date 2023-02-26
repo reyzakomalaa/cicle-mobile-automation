@@ -26,13 +26,19 @@ public class env {
         String randomCompanyName = "Company" + faker.numerify("###");
         return randomCompanyName;
     }
-    public String randomCompanyName = "Company" + faker.numerify("###");
+    public String companyName = "Company" + faker.numerify("###");
+    public String teamName = "Team" + faker.numerify("###");
     public String fakerCompanyDescription(){
         String randomCompanyDescription = faker.company().industry();
         return randomCompanyDescription;
     }
     public String fakerBoardName(){
-        String randomBoardName = faker.name().title();
+        String randomBoardName = "Board" + faker.numerify("###");
         return randomBoardName;
     }
+    public String cardName = "Card" + faker.numerify("###");
+    public String userFullName = faker.name().username();
+    public String userTitle = faker.name().title();
+    public String userAboutMe = faker.country().name();
+
 }

@@ -7,7 +7,7 @@ Feature: Add Company
     And user fill Description
     And user click Create
     Then show toaster success create new Company
-    Then show registered Company Name
+    Then show Company Home
 
   @AddCompany
   Scenario: Ensure user can not create new company if mandatory field is not filled

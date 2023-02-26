@@ -57,12 +57,51 @@ public class pageHome {
         return btnSend;
     }
 
-    public By selectExistingCompany(String existingCompanyName){
-        By companyList = By.xpath("//*[@content-desc = '" + existingCompanyName + "']");
-        return companyList;
+    By btnMenu = By.xpath("//android.view.View/android.view.View[3]/android.view.View[@index = '3']");
+
+    public By getBtnMenu() {
+        return btnMenu;
     }
-    public By selectExistingTeam(String existingTeamName){
-        By companyList = By.xpath("//*[contains(@content-desc, '" + existingTeamName + "')]");
-        return companyList;
+
+    By btnMyAccount = By.xpath("//android.view.View/android.widget.ImageView[@index = '0']");
+
+    public By getBtnMyAccount() {
+        return btnMyAccount;
+    }
+
+    By btnNotification = By.xpath("//android.view.View/android.view.View[3]/android.view.View[@index = '1']");
+
+    public By getBtnNotification() {
+        return btnNotification;
+    }
+
+    By btnInbox = By.xpath("//android.view.View[@content-desc = 'Inbox']");
+
+    public By getBtnInbox() {
+        return btnInbox;
+    }
+
+    By emptyStateHQ = By.xpath("//android.view.View[@content-desc = 'Headquarter']/android.view.View/android.view.View/android.view.View'");
+
+    public By getEmptyStateHQ() {
+        return emptyStateHQ;
+    }
+
+    By emptyStateTeam = By.xpath("//android.view.View[@content-desc = 'Team']/android.view.View/android.view.View/android.view.View'");
+
+    public By getEmptyStateTeam() {
+        return emptyStateTeam;
+    }
+
+    By emptyStateProject = By.xpath("//android.view.View[@content-desc = 'Team']/android.view.View/android.view.View/android.view.View'");
+
+    public By getEmptyStateProject() {
+        return emptyStateProject;
+    }
+
+    By btnWorkload = By.xpath("//android.view.View[@content-desc = 'Workload']");
+
+    public By getBtnWorkload() {
+        return btnWorkload;
     }
 }

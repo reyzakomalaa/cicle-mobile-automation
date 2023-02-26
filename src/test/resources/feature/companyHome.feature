@@ -67,3 +67,19 @@ Feature: Home
     And user fill Member Email
     And user click Send
     Then show toaster success invitation has been sent
+
+  Scenario: Ensure user can see HQ section with Empty State
+    Given user in Company List page
+    When user click Create New Company
+    And user fill Name
+    And user fill Description
+    And user click Create
+    Then user will see HQ section Empty State
+
+  Scenario: Ensure user can see Team section with Empty State
+    Given user in Company List page
+    When user click Create New Company
+    And user fill Name
+    And user fill Description
+    And user click Create
+    Then user will see Team section Empty State

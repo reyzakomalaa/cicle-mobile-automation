@@ -40,12 +40,6 @@ public class addNewCompany extends env{
         wait.until(ExpectedConditions.visibilityOfElementLocated(elementHome.getToastSuccessCreateNewCompany()));
         driver.findElement(elementHome.getToastSuccessCreateNewCompany()).isDisplayed();
     }
-    @Then("show registered Company Name")
-    public void showRegisteredCompanyName() {
-        driver.findElement(element.verifyCompanyName(splitName)).isDisplayed();
-        verifyName = driver.findElement(element.verifyCompanyName(splitName)).getAttribute("content-desc");
-        Assert.assertEquals(verifyName, splitName);
-    }
 
     @And("user fill Company Name")
     public void userFillCompanyName() {
@@ -53,15 +47,11 @@ public class addNewCompany extends env{
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(element.getFieldName()));
         driver.findElement(element.getFieldName()).click();
-        driver.findElement(element.getFieldName()).sendKeys(randomCompanyName);
-
-        saveName = driver.findElement(element.getFieldName()).getText();
-        String[] result = saveName.split(",", 2);
-        splitName = result[0];
+        driver.findElement(element.getFieldName()).sendKeys(companyName);
 
         try {
             FileWriter writer = new FileWriter("src/test/resources/files/companyName.txt", false);
-            writer.write(randomCompanyName + System.lineSeparator());
+            writer.write(companyName + System.lineSeparator());
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();

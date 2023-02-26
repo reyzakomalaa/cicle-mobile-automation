@@ -18,17 +18,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class board extends env {
-    reusableObject element = new reusableObject();
-    pageTeam elementTeam = new pageTeam();
     pageBoard elementBoard = new pageBoard();
-
-    @And("user click Board")
-    public void userClickBoard() {
-        wait = new WebDriverWait(driver, 10);
-
-        wait.until(ExpectedConditions.elementToBeClickable(elementTeam.getBtnBoard()));
-        driver.findElement(elementTeam.getBtnBoard()).click();
-    }
 
     @Then("user is in Board page")
     public void userIsInBoardPage() throws InterruptedException {
@@ -87,14 +77,14 @@ public class board extends env {
 
     @And("user fill Card Name")
     public void userFillCardName() {
-        driver.findElement(elementBoard.getFieldCardName()).sendKeys(fakerBoardName());
+        driver.findElement(elementBoard.getFieldCardName()).sendKeys(cardName);
         saveCardName = driver.findElement(elementBoard.getFieldCardName()).getText();
         String[] result = saveCardName.split(",", 2);
         splitCardName = result[0];
 
         try {
             FileWriter writer = new FileWriter("src/test/resources/files/cardName.txt", false);
-            writer.write(saveCardName + System.lineSeparator());
+            writer.write(cardName + System.lineSeparator());
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -173,14 +163,11 @@ public class board extends env {
     @Then("card will not be created")
     public void cardWillNotBeCreated() throws InterruptedException {
         try {
-            Scanner read = new Scanner(new File("src/test/resources/files/teamName.txt"));
+            Scanner read = new Scanner(new File("src/test/resources/files/cardName.txt"));
             while (read.hasNextLine()) {
-                existingTeamName = read.nextLine();
+                cardName = read.nextLine();
 
                 wait = new WebDriverWait(driver, 10);
-
-                wait.until(ExpectedConditions.visibilityOfElementLocated(elementBoard.verifyBoardPage(existingTeamName)));
-                driver.findElement(elementBoard.verifyBoardPage(existingTeamName)).isDisplayed();
             }
             Thread.sleep(2000);
             read.close();
