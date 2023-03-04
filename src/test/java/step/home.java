@@ -4,7 +4,7 @@ import config.env;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import object.reusableObject;
+import object.reuseableObject;
 import object.pageHome;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class home extends env {
-    reusableObject element = new reusableObject();
+    reuseableObject element = new reuseableObject();
     pageHome elementHome = new pageHome();
     @When("user click Add icon on Home page")
     public void userClickAddIconOnHomePage() {

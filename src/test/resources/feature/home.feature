@@ -83,3 +83,8 @@ Feature: Home
     And user fill Description
     And user click Create
     Then user will see Team section Empty State
+
+  Scenario: Ensure user can Login
+    Given user in Company List page
+    When user click Existing Company
+    Then show Company Home

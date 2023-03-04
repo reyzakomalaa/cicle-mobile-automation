@@ -7,8 +7,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import object.pageCompanyList;
 import object.pageHome;
-import object.reusableObject;
-import org.junit.Assert;
+import object.reuseableObject;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -18,7 +17,7 @@ import java.io.IOException;
 public class addNewCompany extends env{
     pageCompanyList elementCompanyList = new pageCompanyList();
     pageHome elementHome = new pageHome();
-    reusableObject element = new reusableObject();
+    reuseableObject element = new reuseableObject();
     @Given("user in Company List page")
     public void user_in_company_list_page() {
         wait = new WebDriverWait(driver, 20);

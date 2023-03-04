@@ -3,8 +3,7 @@ package step;
 import config.env;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
-import object.reusableObject;
+import object.reuseableObject;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -13,7 +12,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class reusableStep extends env {
-    reusableObject element = new reusableObject();
+    reuseableObject element = new reuseableObject();
     @And("user fill Name")
     public void userFillName() {
         wait = new WebDriverWait(driver, 10);

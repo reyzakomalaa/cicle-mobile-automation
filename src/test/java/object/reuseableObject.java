@@ -2,7 +2,7 @@ package object;
 
 import org.openqa.selenium.By;
 
-public class reusableObject {
+public class reuseableObject {
     By fieldName = By.xpath("//*[contains(@text, 'type name...')]");
 
     public By getFieldName() {
@@ -41,13 +41,61 @@ public class reusableObject {
         return companyList;
     }
     public By selectExistingTeam(String existingTeamName){
-        By companyList = By.xpath("//*[contains(@content-desc, '" + existingTeamName + "')]");
-        return companyList;
+        By teamList = By.xpath("//*[contains(@content-desc, '" + existingTeamName + "')]");
+        return teamList;
     }
-    By btnBackToPrevious = By.xpath("//android.widget.Button[@content-desc = 'Back']");
+    By btnBackToPrevious = By.xpath("//*[@content-desc = 'Back']");
 
     public By getBtnBackToPrevious() {
         return btnBackToPrevious;
+    }
+
+    By btnDropdown = By.xpath("//android.view.View/android.view.View/android.view.View/android.view.View[1]/android.widget.Button[@index = '2']");
+
+    public By getBtnDropdown() {
+        return btnDropdown;
+    }
+
+    By btnGroupChat = By.xpath("//*[@content-desc = 'Group Chat']");
+
+    public By getBtnGroupChat() {
+        return btnGroupChat;
+    }
+
+    By btnDocAndFiles = By.xpath("//*[@content-desc = 'Doc & Files']");
+
+    public By getBtnDocAndFiles() {
+        return btnDocAndFiles;
+    }
+
+    By btnSchedule = By.xpath("//*[@content-desc = 'Schedule']");
+
+    public By getBtnSchedule() {
+        return btnSchedule;
+    }
+
+    By btnOverview = By.xpath("//*[@content-desc = 'Overview']");
+
+    public By getBtnOverview() {
+        return btnOverview;
+    }
+
+    By btnBoard = By.xpath("//*[@content-desc = 'Board']");
+
+    public By getBtnBoard() {
+        return btnBoard;
+    }
+
+    By btnBlast = By.xpath("//*[@content-desc = 'Blast']");
+
+    public By getBtnBlast() {
+        return btnBlast;
+    }
+
+    By btnCheckIns = By.xpath("//*[@content-desc = 'Check-Ins']");
+
+    public By getBtnCheckIns() {
+        return btnCheckIns;
     }
 
 //    public By getBtn_certainTeam(String teamName) {

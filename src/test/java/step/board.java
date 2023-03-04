@@ -7,8 +7,6 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import object.reusableObject;
-import object.pageTeam;
 import object.pageBoard;
 
 import java.io.File;

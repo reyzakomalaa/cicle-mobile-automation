@@ -1,6 +1,6 @@
 Feature: Profile
 
-  Scenario: a user, I can go back to Home page
+  Scenario: Ensure user can go back to Home page
     Given user in Company List page
     When user click Existing Company
     When user click Menu
@@ -8,7 +8,7 @@ Feature: Profile
     And user click Back to previous page
     Then show Company Home
 
-  Scenario: a user, I can go back to Home page
+  Scenario: Ensure user can go to previous page
     Given user in Company List page
     When user click Existing Company
     When user click Menu
@@ -18,7 +18,7 @@ Feature: Profile
     Then show Company Home
 
   @ChangeName
-  Scenario: a user, I can change my Name
+  Scenario: Ensure user can change my Name
     Given user in Company List page
     When user click Existing Company
     When user click Menu
@@ -29,7 +29,7 @@ Feature: Profile
     Then user's name will be changed
 
   @ChangeTitle
-  Scenario: a user, I can change my Title
+  Scenario: Ensure user can change my Title
     Given user in Company List page
     When user click Existing Company
     When user click Menu
@@ -40,7 +40,7 @@ Feature: Profile
     Then user's title will be changed
 
   @ChangeAboutMe
-  Scenario: a user, I can change my About Me
+  Scenario: Ensure user can change my About Me
     Given user in Company List page
     When user click Existing Company
     When user click Menu
@@ -50,7 +50,7 @@ Feature: Profile
     And user click Save icon
     Then user's About Me will be changed
 
-  Scenario: a user, I can not Edit Profile IF mandatory field has not been filled
+  Scenario: Ensure user can not Edit Profile IF mandatory field has not been filled
     Given user in Company List page
     When user click Existing Company
     When user click Menu
